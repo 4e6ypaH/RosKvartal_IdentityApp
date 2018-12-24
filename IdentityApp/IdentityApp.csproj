@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201812241943016_GetBookMigration.Designer.cs">
       <DependentUpon>201812241943016_GetBookMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812242035422_RolesMigration.cs" />
+    <Compile Include="Migrations\201812242035422_RolesMigration.Designer.cs">
+      <DependentUpon>201812242035422_RolesMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -279,6 +283,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\GetUsers.cshtml" />
+    <Content Include="Views\Home\GetMyRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812241943016_GetBookMigration.resx">
       <DependentUpon>201812241943016_GetBookMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812242035422_RolesMigration.resx">
+      <DependentUpon>201812242035422_RolesMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,6 @@
 ﻿using IdentityApp.Models;
-using System;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -40,6 +41,19 @@ namespace IdentityApp.Controllers
             return firstBook.Name + " (" + firstBook.Author + ")";
         }
 
+        [Authorize]
+        public ActionResult GetMyRoles()
+        {
+            IList<string> roles = new List<string> { "Роль не определена" };
+            ApplicationUserManager userManager = HttpContext.GetOwinContext()
+                                                    .GetUserManager<ApplicationUserManager>();
+            ApplicationUser user = userManager.FindByEmail(User.Identity.Name);
+            if (user != null)
+                roles = userManager.GetRoles(user.Id);
+            return View(roles);
+        }
+
+        [Authorize(Roles = "admin")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
