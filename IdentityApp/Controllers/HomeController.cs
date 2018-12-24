@@ -25,6 +25,21 @@ namespace IdentityApp.Controllers
             return View(users);
         }
 
+        public string GetBook()
+        {
+            Book b = new Book { Name = "Война и мир", Author = "Л. Толстой" };
+            Book firstBook = null;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.Books.Add(b);
+                db.SaveChanges();
+                firstBook = db.Books.FirstOrDefault();
+            }
+            if (firstBook == null)
+                return "неизвестно";
+            return firstBook.Name + " (" + firstBook.Author + ")";
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
